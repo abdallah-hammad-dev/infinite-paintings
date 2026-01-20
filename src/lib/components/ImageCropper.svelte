@@ -6,7 +6,7 @@
     import type { Selection } from '@cropper/element-selection';
     import { onMount } from "svelte";
 
-    let { image, width, height, selection } : { image: string, width: number, height: number, selection: Selection | null } = $props();
+    let { image, width, height, selection, selectionId } : { image: string, width: number, height: number, selection: Selection | null, selectionId: string } = $props();
 
     let aspectRatio = $derived(width / height);
 
@@ -58,7 +58,7 @@
 
 <cropper-canvas bind:this={cropperCanvas} class="block w-full h-full">
     <cropper-image bind:this={cropperImage} src={image} alt="Picture" initial-center-size="contain" translatable scalable></cropper-image>
-    <cropper-selection bind:this={cropperSelection} onchange={onchange} aspect-ratio={aspectRatio} {...(selection ?? { 'initial-coverage': "0.8" })} movable resizable precise keyboard>
+    <cropper-selection bind:this={cropperSelection} id={selectionId} onchange={onchange} aspect-ratio={aspectRatio} {...(selection ?? { 'initial-coverage': "0.8" })} movable resizable precise keyboard>
         <cropper-grid covered rows={height} columns={width}></cropper-grid>
         <cropper-handle action="move" theme-color="rgba(255, 255, 255, 0.35)"></cropper-handle>
         <cropper-handle action="n-resize"></cropper-handle>
