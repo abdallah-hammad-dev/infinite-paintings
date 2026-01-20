@@ -1,8 +1,9 @@
 <script lang="ts">
     import { paintingsStore } from '$lib/paintingsStore.svelte';
     import ImageCropper from '$lib/components/ImageCropper.svelte';
+    import PaintingPreview from '$lib/components/PaintingPreview.svelte';
     import { goto } from '$app/navigation';
-    import "cropperjs";
+
 
     type Props = { paintingId: string; paintingImage?: never } | { paintingImage: string; paintingId?: never };
     let { paintingId, paintingImage } : Props = $props();
@@ -55,7 +56,7 @@
             <p class="text-sm text-gray-500 mt-1">Adjust your painting details</p>
         </div>
 
-        <div class="flex-1 overflow-y-auto p-6 space-y-8">
+        <div class="flex-1 overflow-y-auto p-4 space-y-6">
             <div class="space-y-4">
                 <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Dimensions</h3>
                 
@@ -91,7 +92,9 @@
 
                 <div class="pt-4 border-t border-gray-100">
                     <h3 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Preview</h3>
-                    <cropper-viewer selection={"#" + selectionId} style="width: 100%; min-height: 200px; display: block; border-radius: 0.5rem; overflow: hidden; background-color: #f3f4f6;"></cropper-viewer>
+                    {#key [id, width, height]}
+                        <PaintingPreview {width} {height} {selectionId} />
+                    {/key}
                 </div>
             </div>
         </div>
