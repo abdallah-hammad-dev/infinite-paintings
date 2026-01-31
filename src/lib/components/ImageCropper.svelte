@@ -34,14 +34,13 @@
     }
 
     function onchange(event: CustomEvent) {
-        const cropperImageRect = cropperImage.getBoundingClientRect();
         const cropperCanvasRect = cropperCanvas.getBoundingClientRect();
         const selection = event.detail as Selection;
         const maxSelection: Selection = {
-            x: cropperImageRect.left - cropperCanvasRect.left,
-            y: cropperImageRect.top - cropperCanvasRect.top,
-            width: cropperImageRect.width,
-            height: cropperImageRect.height,
+            x: 0,
+            y: 0,
+            width: cropperCanvasRect.width,
+            height: cropperCanvasRect.height,
         };
         const inBounds = (
             selection.x >= maxSelection.x
@@ -58,7 +57,7 @@
 
 <cropper-canvas bind:this={cropperCanvas} class="block w-full h-full">
     <cropper-image bind:this={cropperImage} src={image} alt="Picture" initial-center-size="contain" translatable scalable></cropper-image>
-    <cropper-selection bind:this={cropperSelection} id={selectionId} onchange={onchange} aspect-ratio={aspectRatio} {...(selection ?? { 'initial-coverage': "0.8" })} movable resizable precise keyboard>
+    <cropper-selection bind:this={cropperSelection} id={selectionId} onchange={onchange} aspect-ratio={aspectRatio} {...(selection ?? { 'initial-coverage': "0.5" })} movable resizable precise keyboard>
         <cropper-grid covered rows={height} columns={width}></cropper-grid>
         <cropper-handle action="move" theme-color="rgba(255, 255, 255, 0.35)"></cropper-handle>
         <cropper-handle action="n-resize"></cropper-handle>
