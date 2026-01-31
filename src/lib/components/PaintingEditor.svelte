@@ -20,7 +20,7 @@
     const selectionId = $derived(`cropper-${id}`);
 
     function quit() {
-        goto('/');
+        goto('/create');
     }
 
     function resetSelection() {
