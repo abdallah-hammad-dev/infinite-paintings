@@ -17,7 +17,7 @@
         <img
             src={painting.croppedImage}
             alt={displayTitle}
-            class="absolute inset-0 w-full h-full object-contain p-3"
+            class="absolute inset-3 w-[calc(100%-1.5rem)] h-[calc(100%-1.5rem)] object-contain border border-gray-200 rounded"
         />
 
         <div class="absolute top-2 right-2 px-2 py-1 bg-black/60 backdrop-blur-sm rounded text-xs font-mono text-white">
