@@ -45,7 +45,7 @@
     }
 </script>
 
-<div class="flex h-screen w-full bg-gray-100 overflow-hidden">
+<div class="flex h-full w-full bg-gray-100 overflow-hidden">
         <div class="flex-1 flex items-center justify-center p-8">
         <div class="relative w-full h-full rounded-lg overflow-hidden border border-gray-300 bg-white shadow-inner flex flex-col">
             {#key [id, width, height]}
