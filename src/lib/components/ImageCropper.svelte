@@ -19,8 +19,8 @@
     });
 
     export async function getCroppedImage(): Promise<string> {
-	    const canvas = await cropperSelection.$toCanvas();
-	    return canvas.toDataURL('image/png');
+        const canvas = await cropperSelection.$toCanvas();
+        return canvas.toDataURL('image/png');
     }
 
     export function getCurrentSelection() {
