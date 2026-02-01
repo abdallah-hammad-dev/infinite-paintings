@@ -1,5 +1,6 @@
 <script lang="ts">
     import { paintingsStore } from '$lib/paintingsStore.svelte';
+    import { newPaintingImage } from '$lib/newPaintingImage.svelte';
     import PaintingCard from '$lib/components/PaintingCard.svelte';
     import { goto } from '$app/navigation';
 
@@ -7,7 +8,7 @@
     let fileInput: HTMLInputElement;
 
     function editPainting(id: string) {
-        goto(`/create/painting-editor?id=${id}`);
+        goto(`/create/painting-editor/${id}`);
     }
 
     function newPainting() {
@@ -18,8 +19,12 @@
         const input = event.target as HTMLInputElement;
         const file = input.files?.[0];
         if (file) {
-            const blobUrl = URL.createObjectURL(file);
-            goto(`/create/painting-editor?image=${encodeURIComponent(blobUrl)}`);
+            const reader = new FileReader();
+            reader.onload = () => {
+                newPaintingImage.value = reader.result as string;
+                goto('/create/painting-editor');
+            };
+            reader.readAsDataURL(file);
         }
         input.value = '';
     }
