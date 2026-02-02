@@ -2,6 +2,7 @@
     import { paintingsStore } from '$lib/paintingsStore.svelte';
     import { newPaintingImage } from '$lib/newPaintingImage.svelte';
     import PaintingCard from '$lib/components/PaintingCard.svelte';
+    import ExportButton from '$lib/components/ExportButton.svelte';
     import { goto } from '$app/navigation';
 
     let paintingIds = $derived(Object.keys(paintingsStore));
@@ -59,13 +60,16 @@
         {/if}
     </main>
 
-    <button
-        onclick={newPainting}
-        class="fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 rounded-full bg-black px-10 py-4 text-lg font-semibold text-white shadow-2xl transition-all hover:scale-105 hover:bg-gray-900 active:scale-95"
-    >
-        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-        </svg>
-        Add Painting
-    </button>
+    <div class="fixed bottom-8 left-1/2 -translate-x-1/2 flex gap-4">
+        <button
+            onclick={newPainting}
+            class="flex items-center gap-3 rounded-full bg-black px-10 py-4 text-lg font-semibold text-white shadow-2xl transition-all hover:scale-105 hover:bg-gray-900 active:scale-95"
+        >
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+            </svg>
+            Add Painting
+        </button>
+        <ExportButton />
+    </div>
 </div>
