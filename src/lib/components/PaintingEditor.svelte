@@ -103,13 +103,14 @@
                 <div class="space-y-1.5">
                     <label for="title" class="block text-sm font-medium text-gray-600">Title</label>
                     <input id="title" type="text" placeholder="none" bind:value={title} class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all placeholder:italic placeholder:text-gray-400"/>
+                    <p class="text-xs text-gray-500">Shown on the painting item. Search this in Creative to find it.</p>
                 </div>
 
                 <label class="flex items-center gap-3 p-3 bg-white border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 hover:border-gray-300 transition-all">
                     <input type="checkbox" bind:checked={placeable} class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-offset-0">
                     <div class="flex-1">
                         <span class="text-sm font-medium text-gray-700">Placeable in Survival</span>
-                        <p class="text-xs text-gray-500 mt-0.5">Allow placing without Creative mode</p>
+                        <p class="text-xs text-gray-500 mt-0.5">If off, only placeable in Creative mode</p>
                     </div>
                     {#if placeable}
                         <span class="flex items-center gap-1 text-xs font-medium text-green-600">
