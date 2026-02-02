@@ -23,6 +23,7 @@
 		"vite": "^7.2.6"
 	},
 	"dependencies": {
-		"cropperjs": "^2.1.0"
+		"cropperjs": "^2.1.0",
+		"jszip": "^3.10.1"
 	}
 }
