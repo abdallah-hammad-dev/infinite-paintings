@@ -2,22 +2,22 @@
     import { onMount } from 'svelte';
 
     const paintings = [
-        { w: 2, h: 5, gradient: 'from-rose-400 to-rose-600' },
-        { w: 4, h: 3, gradient: 'from-amber-400 to-orange-500' },
-        { w: 1, h: 3, gradient: 'from-emerald-400 to-green-600' },
-        { w: 3, h: 4, gradient: 'from-sky-400 to-blue-600' },
-        { w: 2, h: 2, gradient: 'from-violet-400 to-purple-600' },
-        { w: 5, h: 3, gradient: 'from-pink-400 to-fuchsia-500' },
-        { w: 1, h: 6, gradient: 'from-cyan-400 to-teal-600' },
-        { w: 3, h: 2, gradient: 'from-yellow-400 to-amber-500' },
-        { w: 4, h: 5, gradient: 'from-indigo-400 to-violet-600' },
-        { w: 2, h: 3, gradient: 'from-lime-400 to-green-500' },
-        { w: 3, h: 1, gradient: 'from-red-400 to-rose-600' },
-        { w: 1, h: 4, gradient: 'from-blue-400 to-indigo-600' },
-        { w: 4, h: 2, gradient: 'from-orange-400 to-red-500' },
-        { w: 2, h: 4, gradient: 'from-teal-400 to-cyan-600' },
-        { w: 3, h: 3, gradient: 'from-fuchsia-400 to-pink-600' },
-        { w: 1, h: 2, gradient: 'from-green-400 to-emerald-600' },
+        { w: 2, h: 5, img: '/paintings/1.webp' },
+        { w: 4, h: 3, img: '/paintings/2.webp' },
+        { w: 1, h: 3, img: '/paintings/3.webp' },
+        { w: 3, h: 4, img: '/paintings/4.webp' },
+        { w: 2, h: 2, img: '/paintings/5.webp' },
+        { w: 5, h: 3, img: '/paintings/6.webp' },
+        { w: 1, h: 6, img: '/paintings/7.webp' },
+        { w: 3, h: 2, img: '/paintings/8.webp' },
+        { w: 4, h: 5, img: '/paintings/9.webp' },
+        { w: 2, h: 3, img: '/paintings/10.webp' },
+        { w: 3, h: 1, img: '/paintings/11.webp' },
+        { w: 1, h: 4, img: '/paintings/12.webp' },
+        { w: 4, h: 2, img: '/paintings/13.webp' },
+        { w: 2, h: 4, img: '/paintings/14.webp' },
+        { w: 3, h: 3, img: '/paintings/15.webp' },
+        { w: 1, h: 2, img: '/paintings/16.webp' },
     ];
 
     const BLOCK = 48;
@@ -74,10 +74,12 @@
             {#each [...paintings, ...paintings] as painting, i (i)}
                 <div class="shrink-0" style="margin-bottom: {(i * 17 % 5) * 16}px;">
                     <div class="p-1.5 bg-linear-to-br from-amber-700 via-amber-800 to-amber-950 rounded shadow-lg shadow-black/30">
-                        <div
-                            class="rounded-sm bg-linear-to-br {painting.gradient}"
+                        <img
+                            src={painting.img}
+                            alt=""
+                            class="rounded-sm object-cover"
                             style="width: {painting.w * BLOCK}px; height: {painting.h * BLOCK}px;"
-                        ></div>
+                        />
                     </div>
                 </div>
             {/each}
