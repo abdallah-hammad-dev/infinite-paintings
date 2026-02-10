@@ -27,7 +27,6 @@ Before 1.21, custom paintings required replacing existing ones using resource pa
 
 - Add new paintings without replacing vanilla ones
 - Create paintings in any size (1×1 to 16×16)
-- Define custom placement rules
 
 ## Privacy & Security
 
