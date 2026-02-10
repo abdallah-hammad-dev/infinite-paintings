@@ -72,7 +72,7 @@
             style="mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);"
         >
             {#each [...paintings, ...paintings] as painting, i (i)}
-                <div class="shrink-0" style="margin-bottom: {(i * 17 % 5) * 16}px;">
+                <div class="shrink-0" style="margin-bottom: {((i % paintings.length) * 17 % 5) * 16}px;">
                     <div class="p-1.5 bg-linear-to-br from-amber-700 via-amber-800 to-amber-950 rounded shadow-lg shadow-black/30">
                         <img
                             src={painting.img}

@@ -21,6 +21,7 @@
             <div class="flex items-center gap-1">
                 <a href="/create" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">CREATE</a>
                 <a href="/guide" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">GUIDE</a>
+                <a href="/about" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">ABOUT</a>
             </div>
         </nav>
     </header>
