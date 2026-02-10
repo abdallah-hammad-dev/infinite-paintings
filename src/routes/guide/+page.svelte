@@ -6,6 +6,18 @@
         <h1 class="text-3xl font-bold text-gray-900">Guide</h1>
         <p class="mt-3 text-lg text-gray-600">Learn how to create and install custom Minecraft paintings.</p>
 
+        <div class="mt-8 aspect-video rounded-lg overflow-hidden shadow-lg">
+            <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/m65MRgwcaLI"
+                title="Infinite Paintings Tutorial"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            ></iframe>
+        </div>
+
         <div class="mt-12 space-y-12">
             <section>
                 <h2 class="text-xl font-semibold text-gray-900">What this tool does</h2>
