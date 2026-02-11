@@ -2,7 +2,7 @@
 
 A free, open-source web tool for creating custom Minecraft paintings of any size (1×1 to 16×16 blocks) from your own images.
 
-🎨 **[Try it now](https://infinite-paintings.pages.dev)**
+🎨 **[Try it now](https://infinite-paintings.com/)**
 
 ## Features
 
@@ -68,6 +68,6 @@ This project is open source. See the [LICENSE](LICENSE) file for details.
 
 ## Links
 
-- **Website**: [infinite-paintings.pages.dev](https://infinite-paintings.pages.dev)
+- **Website**: [infinite-paintings.com](https://infinite-paintings.com/)
 - **GitHub**: [abdallah-hammad-dev/infinite-paintings](https://github.com/abdallah-hammad-dev/infinite-paintings)
 - **Tutorial**: [YouTube](https://www.youtube.com/watch?v=m65MRgwcaLI)
