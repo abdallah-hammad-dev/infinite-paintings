@@ -1,6 +1,11 @@
 <script lang="ts">
 </script>
 
+<svelte:head>
+	<title>About - Infinite Paintings</title>
+	<meta name="description" content="Learn about Infinite Paintings, a free open-source tool to create custom Minecraft paintings and generate ready-to-use datapacks for Minecraft 1.21+." />
+</svelte:head>
+
 <div class="min-h-full bg-white">
     <main class="mx-auto max-w-3xl px-6 py-16">
         <h1 class="text-3xl font-bold text-gray-900">About</h1>

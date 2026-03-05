@@ -31,6 +31,11 @@
     }
 </script>
 
+<svelte:head>
+	<title>Infinite Paintings - Custom Minecraft Painting Datapack Generator</title>
+	<meta name="description" content="Create and add your own custom paintings to Minecraft. Design paintings from 1×1 up to 16×16 blocks and generate a ready-to-use datapack for 1.21+." />
+</svelte:head>
+
 <input
     type="file"
     accept="image/*"
