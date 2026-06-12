@@ -2,7 +2,7 @@
 </script>
 
 <svelte:head>
-	<title>About - Infinite Paintings</title>
+	<title>About | Infinite Paintings</title>
 	<meta name="description" content="Learn about Infinite Paintings, a free open-source tool to create custom Minecraft paintings and generate ready-to-use datapacks for Minecraft 1.21+." />
 </svelte:head>
 

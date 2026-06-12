@@ -1,12 +1,16 @@
 <script lang="ts">
     import './layout.css';
     import favicon from '$lib/assets/favicon.ico';
+    import { page } from '$app/state';
 
     let { children } = $props();
 
 </script>
 
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
+<svelte:head>
+    <link rel="icon" href={favicon} />
+    <link rel="canonical" href={`https://infinite-paintings.com${page.url.pathname}`} />
+</svelte:head>
 
 <div class="flex flex-col h-screen">
     <header class="shrink-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-sm">

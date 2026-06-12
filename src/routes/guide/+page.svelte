@@ -2,7 +2,7 @@
 </script>
 
 <svelte:head>
-	<title>Guide - Infinite Paintings</title>
+	<title>Guide | Infinite Paintings</title>
 	<meta name="description" content="Learn how to create and install custom Minecraft paintings using Infinite Paintings. Step-by-step guide for generating datapacks in Minecraft 1.21+." />
 </svelte:head>
 
