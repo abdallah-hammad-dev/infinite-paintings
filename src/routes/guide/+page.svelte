@@ -1,9 +1,10 @@
 <script lang="ts">
+    import { LATEST_VERSION, MIN_VERSION, VERSION_RANGE } from '$lib/minecraftVersions';
 </script>
 
 <svelte:head>
-	<title>Guide | Infinite Paintings</title>
-	<meta name="description" content="Learn how to create and install custom Minecraft paintings using Infinite Paintings. Step-by-step guide for generating datapacks in Minecraft 1.21+." />
+	<title>Guide: Custom & Animated Minecraft Paintings | Infinite Paintings</title>
+	<meta name="description" content="Learn how to create and install custom and animated Minecraft paintings using Infinite Paintings. Step-by-step guide for generating datapacks in Minecraft {VERSION_RANGE}." />
 </svelte:head>
 
 <div class="min-h-full bg-white">
@@ -15,7 +16,7 @@
             <iframe
                 width="100%"
                 height="100%"
-                src="https://www.youtube.com/embed/m65MRgwcaLI"
+                src="https://www.youtube.com/embed/NP5zIocxPDs"
                 title="Infinite Paintings Tutorial"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -30,13 +31,15 @@
                     This tool lets you create custom Minecraft paintings from your own images.
                 </p>
                 <p class="mt-3 text-gray-600 leading-relaxed">
-                    It is designed for <strong>Minecraft 1.21 and later</strong>, which introduced a new datapack-based system for defining custom painting variants.
+                    It is designed for <strong>Minecraft {MIN_VERSION} and later</strong>, which introduced a new datapack-based system for defining custom painting variants,
+                    and works on every version from {MIN_VERSION} to <strong>{LATEST_VERSION}</strong>.
                     With this system, you can add new paintings with custom sizes, up to 16×16 blocks, without replacing any existing Minecraft paintings.
                 </p>
                 <div class="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
                     <p class="text-sm font-medium text-gray-900 mb-2">The tool handles:</p>
                     <ul class="text-sm text-gray-600 space-y-1">
                         <li>• Image upload</li>
+                        <li>• Animated paintings from GIF, animated WebP and APNG files</li>
                         <li>• Cropping to valid painting dimensions</li>
                         <li>• Generating a ready-to-use datapack</li>
                         <li>• Generating the associated resource pack for textures</li>
@@ -221,9 +224,26 @@
                 </div>
             </section>
 
+            <section id="animated-paintings" class="scroll-mt-8">
+                <h2 class="text-xl font-semibold text-gray-900">Animated paintings</h2>
+                <p class="mt-3 text-gray-600 leading-relaxed">
+                    Upload an animated <strong>GIF</strong>, <strong>WebP</strong> or <strong>APNG</strong> and your painting will play its animation in-game.
+                    There is nothing to configure: crop it like any other image, and the tool extracts every frame and keeps its timing.
+                </p>
+                <p class="mt-3 text-gray-600 leading-relaxed">
+                    Animated paintings show an <strong>Animated</strong> badge with their number of frames on the Create page.
+                </p>
+                <ul class="mt-3 text-gray-600 space-y-1">
+                    <li>• Minecraft shows at most 20 frames per second, so faster animations are simplified while keeping their original speed</li>
+                    <li>• Very long or very large animations keep fewer frames, so the texture stays a reasonable size</li>
+                    <li>• Reading the frames requires a recent browser (Chrome, Edge…). Otherwise, the painting is saved as a still image</li>
+                </ul>
+            </section>
+
             <section>
                 <h2 class="text-xl font-semibold text-gray-900">Notes & limitations</h2>
                 <ul class="mt-4 space-y-2 text-gray-600">
+                    <li>• Works on Minecraft {VERSION_RANGE}</li>
                     <li>• Maximum painting size is 16×16 blocks (Minecraft limitation)</li>
                     <li>• All players must use the resource pack to see the paintings correctly</li>
                     <li>• Datapacks control what exists, resource packs control how it looks</li>

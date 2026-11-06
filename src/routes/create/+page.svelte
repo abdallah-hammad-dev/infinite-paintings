@@ -4,6 +4,7 @@
     import PaintingCard from '$lib/components/PaintingCard.svelte';
     import ExportButton from '$lib/components/ExportButton.svelte';
     import { goto } from '$app/navigation';
+    import { VERSION_RANGE } from '$lib/minecraftVersions';
 
     let paintingIds = $derived(Object.keys(paintingsStore));
     let fileInput: HTMLInputElement;
@@ -32,8 +33,8 @@
 </script>
 
 <svelte:head>
-	<title>Custom Minecraft Painting Datapack Generator | Infinite Paintings</title>
-	<meta name="description" content="Create and add your own custom paintings to Minecraft. Design paintings from 1×1 up to 16×16 blocks and generate a ready-to-use datapack for 1.21+." />
+	<title>Custom & Animated Minecraft Painting Datapack Generator | Infinite Paintings</title>
+	<meta name="description" content="Create and add your own custom paintings to Minecraft, still or animated. Design paintings from 1×1 up to 16×16 blocks and generate a ready-to-use datapack for Minecraft {VERSION_RANGE}." />
 </svelte:head>
 
 <input
@@ -65,12 +66,13 @@
         {/if}
     </main>
 
-    <div class="fixed bottom-8 left-1/2 -translate-x-1/2 flex gap-4">
+    <!-- inset-x-0 + mx-auto centres it without left-1/2, which capped its width at half the screen. -->
+    <div class="fixed inset-x-0 bottom-6 mx-auto flex w-fit gap-3 sm:bottom-8 sm:gap-4">
         <button
             onclick={newPainting}
-            class="flex items-center gap-3 rounded-full bg-black px-10 py-4 text-lg font-semibold text-white shadow-2xl transition-all hover:scale-105 hover:bg-gray-900 active:scale-95"
+            class="flex items-center gap-2 whitespace-nowrap rounded-full bg-black px-6 py-3 text-base font-semibold text-white shadow-2xl transition-all hover:scale-105 hover:bg-gray-900 active:scale-95 sm:gap-3 sm:px-10 sm:py-4 sm:text-lg"
         >
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
             </svg>
             Add Painting

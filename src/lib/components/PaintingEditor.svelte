@@ -27,26 +27,38 @@
         selection = null;
     }
 
+    let saving = $state(false);
+
     async function savePainting() {
-        if (!cropper) return;
-        const croppedImage = await cropper.getCroppedImage();
-        const currentSelection = cropper.getCurrentSelection();
-        paintingsStore[id] = {
-            id,
-            title,
-            image,
-            croppedImage,
-            width,
-            height,
-            selection: currentSelection,
-            placeable
-        };
+        if (!cropper || saving) return;
+        saving = true;
+        try {
+            const [croppedImage, animation] = await Promise.all([
+                cropper.getCroppedImage(),
+                cropper.getCroppedAnimation()
+            ]);
+            const currentSelection = cropper.getCurrentSelection();
+            paintingsStore[id] = {
+                id,
+                title,
+                image,
+                croppedImage,
+                animation,
+                width,
+                height,
+                selection: currentSelection,
+                placeable
+            };
+        } finally {
+            saving = false;
+        }
         quit();
     }
 </script>
 
-<div class="flex h-full w-full bg-gray-100 overflow-hidden">
-        <div class="flex-1 flex items-center justify-center p-8">
+<!-- Side by side from md up; on phones the cropper sits above the settings and the page scrolls. -->
+<div class="flex flex-col w-full bg-gray-100 md:flex-row md:h-full md:overflow-hidden">
+        <div class="h-[60svh] flex items-center justify-center p-4 md:h-auto md:flex-1 md:p-8">
         <div class="relative w-full h-full rounded-lg overflow-hidden border border-gray-300 bg-white shadow-inner flex flex-col">
             {#key [id, width, height]}
                 <ImageCropper bind:this={cropper} {image} {width} {height} {selection} {selectionId}></ImageCropper>
@@ -54,7 +66,7 @@
         </div>
     </div>
 
-    <aside class="w-80 bg-white shadow-2xl z-10 flex flex-col">
+    <aside class="w-full bg-white shadow-2xl z-10 flex flex-col md:w-80">
         <div class="p-5 border-b border-gray-200">
             <h2 class="text-lg font-semibold text-gray-800">Painting Editor</h2>
             <p class="text-sm text-gray-500 mt-0.5">Configure your masterpiece</p>
@@ -129,12 +141,13 @@
             </div>
         </div>
 
-        <div class="p-4 border-t border-gray-200 flex gap-3">
-            <button onclick={quit} class="flex-1 px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition-all">
+        <!-- On phones the settings scroll with the page; keep Cancel and Save in reach. -->
+        <div class="p-4 border-t border-gray-200 flex gap-3 bg-white max-md:sticky max-md:bottom-0">
+            <button onclick={quit} disabled={saving} class="flex-1 px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transition-all disabled:opacity-60 disabled:cursor-not-allowed">
                 Cancel
             </button>
-            <button onclick={savePainting} class="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all">
-                Save
+            <button onclick={savePainting} disabled={saving} class="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all disabled:opacity-60 disabled:cursor-wait">
+                {saving ? 'Saving…' : 'Save'}
             </button>
         </div>
     </aside>

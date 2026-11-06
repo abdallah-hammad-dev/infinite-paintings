@@ -24,6 +24,12 @@
             {painting.width}×{painting.height}
         </div>
 
+        {#if painting.animation}
+            <div class="absolute bottom-2 left-2 px-2 py-1 bg-blue-600/90 backdrop-blur-sm rounded text-xs font-medium text-white">
+                Animated · {painting.animation.frameTimes.length} frames
+            </div>
+        {/if}
+
         {#if !painting.placeable}
             <div class="absolute top-2 left-2 px-2 py-1 bg-amber-500/90 backdrop-blur-sm rounded text-xs font-medium text-white">
                 Creative Only

@@ -1,9 +1,10 @@
 <script lang="ts">
+    import { LATEST_VERSION, MIN_VERSION, VERSION_RANGE } from '$lib/minecraftVersions';
 </script>
 
 <svelte:head>
 	<title>About | Infinite Paintings</title>
-	<meta name="description" content="Learn about Infinite Paintings, a free open-source tool to create custom Minecraft paintings and generate ready-to-use datapacks for Minecraft 1.21+." />
+	<meta name="description" content="Learn about Infinite Paintings, a free open-source tool to create custom and animated Minecraft paintings and generate ready-to-use datapacks for Minecraft {VERSION_RANGE}." />
 </svelte:head>
 
 <div class="min-h-full bg-white">
@@ -16,6 +17,10 @@
                 <h2 class="text-xl font-semibold text-gray-900">What is Infinite Paintings?</h2>
                 <p class="mt-3 text-gray-600 leading-relaxed">
                     Infinite Paintings is a free, open-source web tool that lets you create custom Minecraft paintings of any size (from 1×1 up to 16×16 blocks) from your own images.
+                    Paintings can even be animated: upload a GIF, animated WebP or APNG and it plays in-game.
+                </p>
+                <p class="mt-3 text-gray-600 leading-relaxed">
+                    The generated packs work on every Minecraft version from {MIN_VERSION} to {LATEST_VERSION}.
                 </p>
                 <p class="mt-3 text-gray-600 leading-relaxed">
                     Unlike older methods that required replacing existing Minecraft paintings, this tool leverages the new painting variant system introduced in Minecraft 1.21, allowing you to add unlimited new paintings without losing any of the originals.
@@ -29,7 +34,7 @@
                 </p>
                 <ul class="mt-3 text-gray-600 space-y-2">
                     <li><strong>Datapack</strong> — Defines the painting variants (dimensions, placement rules, etc.)</li>
-                    <li><strong>Resource pack</strong> — Contains the actual image textures for your paintings</li>
+                    <li><strong>Resource pack</strong> — Contains the actual image textures for your paintings, along with the frame timings of animated ones</li>
                 </ul>
                 <p class="mt-3 text-gray-600 leading-relaxed">
                     This approach uses Minecraft 1.21's native painting variant system with datapacks and texture packs, making it possible to add any number of paintings with any size up to 16×16 blocks.
@@ -113,7 +118,7 @@
             </section>
         </div>
 
-        <div class="mt-16 pt-8 border-t border-gray-200 flex gap-4">
+        <div class="mt-16 pt-8 border-t border-gray-200 flex flex-wrap gap-4">
             <a href="/create" class="inline-flex items-center gap-2 rounded-lg bg-gray-900 px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800 transition-colors">
                 Start Creating
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
