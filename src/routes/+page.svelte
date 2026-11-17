@@ -45,17 +45,17 @@
 </script>
 
 <svelte:head>
-	<title>Custom & Animated Minecraft Painting Generator ({VERSION_RANGE}) | Infinite Paintings</title>
+	<title>Custom & Animated Minecraft Painting Generator with Datapack ({VERSION_RANGE}) | Infinite Paintings</title>
 	<meta name="description" content="Free custom Minecraft painting generator. Turn any image or GIF into a still or animated painting, from 1×1 up to 16×16 blocks, and download a ready-to-use datapack & resource pack for Minecraft {VERSION_RANGE}." />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="Infinite Paintings" />
-	<meta property="og:title" content="Custom & Animated Minecraft Painting Generator ({VERSION_RANGE})" />
+	<meta property="og:title" content="Custom & Animated Minecraft Painting Generator with Datapack ({VERSION_RANGE})" />
 	<meta property="og:description" content="Turn any image or GIF into a custom, even animated, Minecraft painting and download a ready-to-use datapack & resource pack for Minecraft {VERSION_RANGE}." />
 	<meta property="og:url" content="https://infinite-paintings.com/" />
 	<meta property="og:image" content="https://infinite-paintings.com/logo.png" />
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:title" content="Custom & Animated Minecraft Painting Generator ({VERSION_RANGE})" />
+	<meta name="twitter:title" content="Custom & Animated Minecraft Painting Generator with Datapack ({VERSION_RANGE})" />
 	<meta name="twitter:description" content="Turn any image or GIF into a custom, even animated, Minecraft painting with a ready-to-use datapack for Minecraft {VERSION_RANGE}." />
 	<meta name="twitter:image" content="https://infinite-paintings.com/logo.png" />
 
