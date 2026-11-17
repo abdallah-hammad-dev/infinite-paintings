@@ -7,7 +7,7 @@
     import { onMount } from "svelte";
     import { cropAnimation, type PaintingAnimation } from '$lib/animatedImage';
 
-    let { image, width, height, selection, selectionId } : { image: string, width: number, height: number, selection: Selection | null, selectionId: string } = $props();
+    let { image, width, height, selection, selectionId, initialCoverage = 0.5 } : { image: string, width: number, height: number, selection: Selection | null, selectionId: string, initialCoverage?: number } = $props();
 
     let aspectRatio = $derived(width / height);
 
@@ -98,7 +98,7 @@
 
 <cropper-canvas bind:this={cropperCanvas} class="block w-full h-full">
     <cropper-image bind:this={cropperImage} src={image} alt="Picture" initial-center-size="contain" translatable scalable></cropper-image>
-    <cropper-selection bind:this={cropperSelection} id={selectionId} onchange={onchange} aspect-ratio={aspectRatio} {...(selection ?? { 'initial-coverage': "0.5" })} movable resizable precise keyboard>
+    <cropper-selection bind:this={cropperSelection} id={selectionId} onchange={onchange} aspect-ratio={aspectRatio} {...(selection ?? { 'initial-coverage': String(initialCoverage) })} movable resizable precise keyboard>
         <cropper-grid covered rows={height} columns={width}></cropper-grid>
         <cropper-handle action="move" theme-color="rgba(255, 255, 255, 0.35)"></cropper-handle>
         <cropper-handle action="n-resize"></cropper-handle>

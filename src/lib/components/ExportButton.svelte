@@ -1,8 +1,7 @@
 <script lang="ts">
     import { paintingsStore } from "$lib/paintingsStore.svelte";
     import JSZip from "jszip";
-
-    const NAMESPACE = "infinite-paintings";
+    import { NAMESPACE } from "$lib/packFormat";
 
     // Minecraft 1.21 formats: the oldest version that supports custom painting variants.
     const DATA_PACK_MIN_FORMAT = 48;
@@ -110,7 +109,7 @@
 <button
     onclick={exportPacks}
     disabled={Object.keys(paintingsStore).length === 0}
-    class="flex items-center gap-2 whitespace-nowrap rounded-full bg-black px-6 py-3 text-base font-semibold text-white shadow-2xl transition-all hover:scale-105 hover:bg-gray-900 active:scale-95 disabled:opacity-50 disabled:hover:scale-100 sm:gap-3 sm:px-10 sm:py-4 sm:text-lg"
+    class="flex items-center gap-2 whitespace-nowrap rounded-full bg-black px-4 py-3 text-base max-[360px]:px-3 font-semibold text-white shadow-2xl transition-all hover:scale-105 hover:bg-gray-900 active:scale-95 disabled:opacity-50 disabled:hover:scale-100 sm:gap-3 sm:px-10 sm:py-4 sm:text-lg"
 >
     <svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V3" />

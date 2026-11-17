@@ -3,6 +3,7 @@
     import { newPaintingImage } from '$lib/newPaintingImage.svelte';
     import PaintingCard from '$lib/components/PaintingCard.svelte';
     import ExportButton from '$lib/components/ExportButton.svelte';
+    import ImportButton from '$lib/components/ImportButton.svelte';
     import { goto } from '$app/navigation';
     import { VERSION_RANGE } from '$lib/minecraftVersions';
 
@@ -50,6 +51,7 @@
         {#if paintingIds.length === 0}
             <div class="py-16 text-center">
                 <p class="text-sm text-gray-400">No paintings yet</p>
+                <p class="mt-1 text-sm text-gray-400">Add one, or import a .zip you exported before to keep working on it.</p>
             </div>
         {:else}
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -67,16 +69,17 @@
     </main>
 
     <!-- inset-x-0 + mx-auto centres it without left-1/2, which capped its width at half the screen. -->
-    <div class="fixed inset-x-0 bottom-6 mx-auto flex w-fit gap-3 sm:bottom-8 sm:gap-4">
+    <div class="fixed inset-x-0 bottom-6 mx-auto flex w-fit gap-2 max-[360px]:gap-1.5 sm:bottom-8 sm:gap-4">
         <button
             onclick={newPainting}
-            class="flex items-center gap-2 whitespace-nowrap rounded-full bg-black px-6 py-3 text-base font-semibold text-white shadow-2xl transition-all hover:scale-105 hover:bg-gray-900 active:scale-95 sm:gap-3 sm:px-10 sm:py-4 sm:text-lg"
+            class="flex items-center gap-2 whitespace-nowrap rounded-full bg-black px-4 py-3 text-base max-[360px]:px-3 font-semibold text-white shadow-2xl transition-all hover:scale-105 hover:bg-gray-900 active:scale-95 sm:gap-3 sm:px-10 sm:py-4 sm:text-lg"
         >
             <svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
             </svg>
             Add Painting
         </button>
+        <ImportButton />
         <ExportButton />
     </div>
 </div>

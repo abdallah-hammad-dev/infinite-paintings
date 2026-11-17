@@ -8,7 +8,8 @@ export interface Painting {
 	/** Still image: the texture of static paintings, the preview of animated ones. */
 	croppedImage: string;
 	animation: PaintingAnimation | null;
-	selection : Selection;
+	/** Null for imported paintings: the editor then starts with their whole image selected. */
+	selection : Selection | null;
 	width: number;
 	height: number;
 	placeable: boolean;
