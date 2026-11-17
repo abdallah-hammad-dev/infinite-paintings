@@ -240,6 +240,24 @@
                 </ul>
             </section>
 
+            <section id="editing-exported-paintings" class="scroll-mt-8">
+                <h2 class="text-xl font-semibold text-gray-900">Editing paintings you already exported</h2>
+                <p class="mt-3 text-gray-600 leading-relaxed">
+                    Your paintings aren't kept when you close or reload the page. To change them later or add new ones, click <strong>Import</strong> on the Create page
+                    and choose the <strong>.zip</strong> you exported (or its datapack and resource pack zips together).
+                    They come back with their titles, sizes, Survival setting and animations, ready to edit before you export again.
+                </p>
+                <p class="mt-3 text-gray-600 leading-relaxed">
+                    Every painting has a <strong>unique ID</strong> that never changes, even after an import. Exporting again keeps the same IDs,
+                    so the paintings already placed in your worlds stay where they are, and show your changes once you replace the old packs with the new ones.
+                </p>
+                <ul class="mt-3 text-gray-600 space-y-1">
+                    <li>• Deleting a painting from the list removes it from your next export, so keep the ones your worlds use</li>
+                    <li>• If you change the size of a painting already placed, it may no longer fit its wall and drop as an item</li>
+                    <li>• The original image isn't in the zip: an imported painting can be resized or cropped tighter, but not zoomed back out</li>
+                </ul>
+            </section>
+
             <section>
                 <h2 class="text-xl font-semibold text-gray-900">Notes & limitations</h2>
                 <ul class="mt-4 space-y-2 text-gray-600">
