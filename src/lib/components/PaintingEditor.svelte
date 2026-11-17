@@ -18,7 +18,7 @@
     let selection = $derived(paintingId ? paintingsStore[paintingId].selection : null);
     let placeable = $derived(paintingId ? paintingsStore[paintingId].placeable : true);
     // Imported paintings have no saved selection, and their image is the exported texture: select all of it.
-    let initialCoverage = $derived(paintingId && !paintingsStore[paintingId].selection ? 1 : 0.5);
+    let fitToImage = $derived(paintingId ? !paintingsStore[paintingId].selection : false);
     const selectionId = $derived(`cropper-${id}`);
 
     function quit() {
@@ -27,7 +27,7 @@
 
     function resetSelection() {
         selection = null;
-        initialCoverage = 0.5;
+        fitToImage = false;
     }
 
     let saving = $state(false);
@@ -64,7 +64,7 @@
         <div class="h-[60svh] flex items-center justify-center p-4 md:h-auto md:flex-1 md:p-8">
         <div class="relative w-full h-full rounded-lg overflow-hidden border border-gray-300 bg-white shadow-inner flex flex-col">
             {#key [id, width, height]}
-                <ImageCropper bind:this={cropper} {image} {width} {height} {selection} {selectionId} {initialCoverage}></ImageCropper>
+                <ImageCropper bind:this={cropper} {image} {width} {height} {selection} {selectionId} {fitToImage}></ImageCropper>
             {/key}
         </div>
     </div>

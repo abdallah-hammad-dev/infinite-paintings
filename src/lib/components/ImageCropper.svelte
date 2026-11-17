@@ -7,7 +7,7 @@
     import { onMount } from "svelte";
     import { cropAnimation, type PaintingAnimation } from '$lib/animatedImage';
 
-    let { image, width, height, selection, selectionId, initialCoverage = 0.5 } : { image: string, width: number, height: number, selection: Selection | null, selectionId: string, initialCoverage?: number } = $props();
+    let { image, width, height, selection, selectionId, fitToImage = false } : { image: string, width: number, height: number, selection: Selection | null, selectionId: string, fitToImage?: boolean } = $props();
 
     let aspectRatio = $derived(width / height);
 
@@ -15,8 +15,17 @@
     let cropperImage: CropperImage;
     let cropperSelection: CropperSelection;
 
+    // cropperjs 2.3.1 can size the initial selection from the image before fitting it into the canvas
+    // (its $ready() resolves as soon as the image is decoded), so the coverage is only set once it's fitted.
+    let imageFitted = $state(false);
+
     onMount(() => {
         cropperCanvas.scaleStep = 0;
+        // cropper-image fits the image when it loads (or right away if it already had), with a listener
+        // added before this one.
+        const imageElement = cropperImage.$image;
+        if (imageElement.complete && imageElement.naturalWidth > 0) imageFitted = true;
+        else imageElement.addEventListener('load', () => (imageFitted = true), { once: true });
     });
 
     export async function getCroppedImage(): Promise<string> {
@@ -72,33 +81,13 @@
         return selection;
     }
 
-    function onchange(event: CustomEvent) {
-        // The selection already fires while it initialises, before bind:this has run.
-        if (!cropperCanvas) return;
-        const cropperCanvasRect = cropperCanvas.getBoundingClientRect();
-        const selection = event.detail as Selection;
-        const maxSelection: Selection = {
-            x: 0,
-            y: 0,
-            width: cropperCanvasRect.width,
-            height: cropperCanvasRect.height,
-        };
-        const inBounds = (
-            selection.x >= maxSelection.x
-            && selection.y >= maxSelection.y
-            && (selection.x + selection.width) <= (maxSelection.x + maxSelection.width)
-            && (selection.y + selection.height) <= (maxSelection.y + maxSelection.height)
-        );
-        if (!inBounds) {
-            event.preventDefault();
-        }
-    }
-
 </script>
 
 <cropper-canvas bind:this={cropperCanvas} class="block w-full h-full">
-    <cropper-image bind:this={cropperImage} src={image} alt="Picture" initial-center-size="contain" translatable scalable></cropper-image>
-    <cropper-selection bind:this={cropperSelection} id={selectionId} onchange={onchange} aspect-ratio={aspectRatio} {...(selection ?? { 'initial-coverage': String(initialCoverage) })} movable resizable precise keyboard>
+    <cropper-image bind:this={cropperImage} src={image} alt="Picture" initial-fit="contain" translatable scalable></cropper-image>
+    <!-- initial-coverage is a share of the image, measured once it has loaded: 1 selects all of it.
+         min-inset="0" keeps the selection inside the canvas. -->
+    <cropper-selection bind:this={cropperSelection} id={selectionId} aspect-ratio={aspectRatio} {...(selection ?? (imageFitted ? { 'initial-coverage': fitToImage ? "1" : "0.5" } : {}))} min-inset="0" movable resizable precise keyboard>
         <cropper-grid covered rows={height} columns={width}></cropper-grid>
         <cropper-handle action="move" theme-color="rgba(255, 255, 255, 0.35)"></cropper-handle>
         <cropper-handle action="n-resize"></cropper-handle>
